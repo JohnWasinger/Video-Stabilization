@@ -161,3 +161,5 @@ Video Timing Generation: Standard HDMI/DVI timing signals
 Stabilization Integration: Applies X/Y offset corrections
 Border Handling: Fills areas outside stabilized image
 Configurable Timing: Supports various video formats
+
+

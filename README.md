@@ -42,3 +42,75 @@ Add appropriate clock management (PLLs/DCMs)
 Configure the DDR3 memory controller
 Adjust parameters for your specific video format
 Add any necessary HDMI PHY interfaces
+
+# Main HDMI Receiver (hdmi_receiver)
+Key Features:
+
+Automatic Format Detection: Measures timing parameters and detects video resolution
+State Machine Control: Robust state management for sync detection and video processing
+Clock Domain Synchronization: Proper handling of HDMI clock domain
+Lock Detection: Monitors signal stability and indicates when video is locked
+Frame Rate Measurement: Calculates and reports video frame rate
+Debug Support: Provides state information for troubleshooting
+
+Input/Output Interface:
+
+HDMI Inputs: Clock, 24-bit RGB data, DE, HSync, VSync
+Video Outputs: Pixel clock, data, validity signals, frame/line start pulses
+Status Outputs: Lock indication, resolution, frame rate, debug state
+
+State Machine:
+
+IDLE: Wait for sync signals
+SYNC_DETECT: Look for consistent sync patterns
+TIMING_MEASURE: Measure active video timing
+VIDEO_ACTIVE: Normal video processing and output
+FRAME_SYNC: Resynchronization when needed
+
+Enhanced Clock Recovery (hdmi_clock_recovery)
+Features:
+
+TMDS Decoding: Handles differential HDMI signals
+Clock Recovery: Extracts pixel clock from HDMI stream
+Multi-Channel Decoding: Separate processing for R, G, B channels
+Control Signal Extraction: Recovers sync and DE signals
+
+Key Components:
+
+Differential input buffers
+Clock recovery PLL
+TMDS deserializers
+Channel decoders
+
+Implementation Notes:
+Platform-Specific Elements:
+
+Clock Buffers: Use IBUFDS (Xilinx) or equivalent for differential inputs
+PLLs: Use MMCM/PLL primitives for clock generation
+Deserializers: Use ISERDES or similar for high-speed data recovery
+
+Timing Parameters:
+
+Default configured for 1280x720@60Hz
+Automatically adapts to detected video format
+Supports common HDMI/DVI video standards
+
+Usage Example:
+vhdlhdmi_rx_inst: hdmi_receiver
+    port map (
+        clk => clk_100mhz,
+        rst => reset,
+        hdmi_clk => hdmi_pixel_clk,
+        hdmi_data => hdmi_rgb_data,
+        hdmi_de => hdmi_data_enable,
+        hdmi_hsync => hdmi_h_sync,
+        hdmi_vsync => hdmi_v_sync,
+        pixel_clk => video_clk,
+        pixel_data => video_data,
+        pixel_valid => video_valid,
+        frame_start => frame_sync,
+        line_start => line_sync,
+        video_locked => video_lock_status
+    );
+Integration with Video Stabilizer:
+This HDMI receiver integrates seamlessly with the video stabilization system I created earlier. The pixel_clk, pixel_data, pixel_valid, frame_start, and line_start outputs connect directly to the stabilization system inputs.

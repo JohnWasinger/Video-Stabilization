@@ -114,3 +114,40 @@ vhdlhdmi_rx_inst: hdmi_receiver
     );
 Integration with Video Stabilizer:
 This HDMI receiver integrates seamlessly with the video stabilization system I created earlier. The pixel_clk, pixel_data, pixel_valid, frame_start, and line_start outputs connect directly to the stabilization system inputs.
+
+Frame Buffer Module (frame_buffer)
+Key Features:
+
+Dual-Port Memory: Simultaneous read/write operations
+Configurable Size: Parameterized address and data width
+BRAM Inference: Optimized for FPGA block RAM resources
+Status Monitoring: Buffer full/empty indicators
+Cross-Clock Domain: Separate read/write clock domains
+
+Usage:
+
+Stores video frames for motion analysis and stabilization
+Supports up to 1M pixels (suitable for 1280x720 and higher)
+Automatically infers BRAM for efficient memory usage
+
+Ping-Pong Frame Buffer (ping_pong_frame_buffer)
+Advanced Features:
+
+Double Buffering: Automatic ping-pong operation
+Frame Synchronization: Seamless frame switching
+Continuous Operation: No frame drops during buffer switching
+Automatic Address Management: Built-in address generation
+
+Benefits:
+
+Enables real-time processing without frame drops
+Smooth transitions between frames
+Ideal for video stabilization applications
+
+Video Output Module (video_output)
+Core Features:
+
+Video Timing Generation: Standard HDMI/DVI timing signals
+Stabilization Integration: Applies X/Y offset corrections
+Border Handling: Fills areas outside stabilized image
+Configurable Timing: Supports various video formats

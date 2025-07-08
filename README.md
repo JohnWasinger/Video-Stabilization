@@ -1,6 +1,6 @@
 # Video-Stabilization
 
-Alternate GitHub repos to look into:
+Alternative GitHub repos to look into:
 
 https://github.com/fcayci/vhdl-hdmi-out
 

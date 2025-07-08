@@ -2,13 +2,13 @@
 
 Alternative GitHub repos to look into:
 
-https://github.com/fcayci/vhdl-hdmi-out
+- https://github.com/fcayci/vhdl-hdmi-out
 
 Other supporting links:
 
-https://www.fpga4fun.com/HDMI.html
-https://hackaday.com/2020/06/02/an-open-source-hdmi-implementation-for-fpgas/
-https://forum.digilent.com/topic/20043-add-vhdl-module-to-hdmi-demo-block-diagram/
+- https://www.fpga4fun.com/HDMI.html
+- https://hackaday.com/2020/06/02/an-open-source-hdmi-implementation-for-fpgas/
+- https://forum.digilent.com/topic/20043-add-vhdl-module-to-hdmi-demo-block-diagram/
 
 This is a comprehensive VHDL video stabilization system for processing HDMI video feeds. Here's what the system includes:
 Main Components:
